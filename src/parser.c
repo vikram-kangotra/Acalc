@@ -5,7 +5,8 @@
 // expression       ->  term;
 // term             ->  factor (("-" | "+") factor)*;
 // factor           ->  unary (("/" | "*") unary)*;
-// unary            ->  ("-") unary | primary;
+// unary            ->  ("-") unary | power;
+// power            ->  primary ("^" primary)*;
 // primary          ->  NUMBER
 //                  |   IDENTIFIER
 //                  |   "(" expression ")";
@@ -57,11 +58,15 @@ static bool match(TokenType type) {
 static Token* consume(TokenType type, const char* const message) {
     if (check(type)) return advance();
     error_msg(peek(), message);
+    return NULL;
 }
 
 static Expr* primary() {
     if (match(TOKEN_NUMBER)) {
         return make_literal_expr(previous());
+    }
+    if (match(TOKEN_IDENTIFIER)) {
+        return make_identifier_expr(previous());
     }
     if (match(TOKEN_LEFT_PAREN)) {
         Expr* expr = expression();
@@ -70,15 +75,29 @@ static Expr* primary() {
     }
 
     error_msg(peek(), "Expect expression.");
+    return NULL;
+}
+
+static Expr* power() {
+    Expr* expr = primary();
+
+    while (match(TOKEN_POWER)) {
+        Token* operator = previous();
+        Expr* right = primary();
+        expr = make_binary_expr(expr, operator, right);
+    }
+    return expr;
 }
 
 static Expr* unary() {
-    if (match(TOKEN_MINUS)) {
+    if (match(TOKEN_MINUS) ||
+        match(TOKEN_SIN) || match(TOKEN_COS) || match(TOKEN_TAN) 
+        ) {
         Token* operator = previous();
         Expr* right = unary();
         return make_unary_expr(operator, right);
     }
-    return primary();
+    return power();
 }
 
 static Expr* factor() {

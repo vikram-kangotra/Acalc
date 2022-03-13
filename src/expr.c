@@ -31,3 +31,10 @@ Expr* make_group_expr(Expr* e) {
     expr->groupExpr.expr = e;
     return expr;
 }
+
+Expr* make_identifier_expr(Token* token) {
+    Expr* expr = (Expr*) malloc(sizeof(Expr));
+    expr->type = identifier_expr;
+    expr->token = token;
+    return expr;
+}
