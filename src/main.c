@@ -2,7 +2,7 @@
 #include "vector.h"
 #include "scanner.h"
 #include "parser.h"
-#include "astPrinter.h"
+#include "interpreter.h"
 #include <stdio.h>
 
 void run(const char* const line) {
@@ -12,7 +12,8 @@ void run(const char* const line) {
     initParser(tokens);
     Expr* ast = parse();
 
-    astPrinter(ast);
+    initInterpreter(ast);
+    interpret();
 
     freeScanner();
 }

@@ -57,6 +57,7 @@ static bool match(TokenType type) {
 static Token* consume(TokenType type, const char* const message) {
     if (check(type)) return advance();
     error_msg(peek(), message);
+    return NULL;
 }
 
 static Expr* primary() {
@@ -70,6 +71,7 @@ static Expr* primary() {
     }
 
     error_msg(peek(), "Expect expression.");
+    return NULL;
 }
 
 static Expr* unary() {
