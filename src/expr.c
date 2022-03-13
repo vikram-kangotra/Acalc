@@ -38,3 +38,12 @@ Expr* make_identifier_expr(Token* token) {
     expr->token = token;
     return expr;
 }
+
+Expr* make_integeration_expr(Expr* int_expr, Expr* a, Expr* b) {
+    Expr* expr = (Expr*) malloc(sizeof(Expr));
+    expr->type = integeration_expr;
+    expr->integerationExpr.int_expr = int_expr;
+    expr->integerationExpr.a = a;
+    expr->integerationExpr.b = b;
+    return expr;
+}

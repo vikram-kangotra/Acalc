@@ -5,5 +5,6 @@
 
 void initEnvironment();
 double environment_get(Token* token);
+void environment_define(const char* const name, double value);
 
 #endif

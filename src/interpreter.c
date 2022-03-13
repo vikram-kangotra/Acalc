@@ -75,6 +75,21 @@ double visitIdentifierExpr(Expr* expr) {
     return environment_get(expr->token);
 }
 
+double visitIntegerationExpr(Expr* expr) {
+    Expr* int_expr = expr->integerationExpr.int_expr;
+    double a = evaluate(expr->integerationExpr.a);
+    double b = evaluate(expr->integerationExpr.b); 
+
+    double result = 0;
+    int n = 100000;
+    double h = (b - a) / n;
+    for (double i = 1; i <= n; ++i) {
+        environment_define("x", a+i*h);
+        result += evaluate(int_expr)*h;
+    }
+    return result;
+}
+
 static double evaluate(Expr* expr) {
     switch (expr->type) {
         case literal_expr: return visitLiteralExpr(expr);
@@ -82,6 +97,7 @@ static double evaluate(Expr* expr) {
         case binary_expr: return visitBinaryExpr(expr);
         case group_expr: return visitGroupExpr(expr);
         case identifier_expr: return visitIdentifierExpr(expr);
+        case integeration_expr: return visitIntegerationExpr(expr);
     }
 }
 

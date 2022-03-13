@@ -4,6 +4,7 @@
 #include "parser.h"
 #include "interpreter.h"
 #include <stdio.h>
+#include "astPrinter.h"
 
 void run(const char* const line) {
     initScanner(line); 
@@ -11,6 +12,8 @@ void run(const char* const line) {
 
     initParser(tokens);
     Expr* ast = parse();
+
+    //astPrinter(ast);
 
     initInterpreter(ast);
     interpret();

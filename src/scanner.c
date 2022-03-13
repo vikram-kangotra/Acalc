@@ -126,6 +126,7 @@ static TokenType identifierType() {
                 return type;
             }
         } break;
+        case 'i': return checkKeyword(1, 2, "nt", TOKEN_INT);
         case 's': return checkKeyword(1, 2, "in", TOKEN_SIN);
         case 't': {
             if (scanner.current - scanner.start > 1) {

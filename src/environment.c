@@ -13,16 +13,9 @@ typedef struct {
     double value;
 } Pair;
 
-void define(const char* const name, double value) {
-    Pair* pair = (Pair*) malloc(sizeof(Pair));
-    pair->name = name;
-    pair->value = value;
-    vec_push(environment, pair);
-}
-
 void initEnvironment() {
     environment = vec_make();
-    define("pi", M_PI);
+    environment_define("pi", M_PI);
 }
 
 bool equal(Token* token, Pair* pair) {
@@ -42,4 +35,18 @@ double environment_get(Token* token) {
     if (index == -1)
         error_msg(token, "variable not declared.");
     return ((Pair*)environment->body[index])->value;
+}
+
+void environment_define(const char* const name, double value) {
+    Token token;
+    token.start = name;
+    int index = find(&token);
+    if (index == -1) {
+        Pair* pair = (Pair*) malloc(sizeof(Pair));
+        pair->name = name;
+        pair->value = value;
+        vec_push(environment, pair);
+    } else {
+        ((Pair*)environment->body[index])->value = value;
+    }
 }

@@ -5,8 +5,9 @@
 // expression       ->  term;
 // term             ->  factor (("-" | "+") factor)*;
 // factor           ->  unary (("/" | "*") unary)*;
-// unary            ->  ("-") unary | power;
+// unary            ->  ("-" | "sin" | "cos" | "tan") unary | power;
 // power            ->  primary ("^" primary)*;
+// integeration     ->  "int" "(" term ")" "(" term "," term ")" | primary;
 // primary          ->  NUMBER
 //                  |   IDENTIFIER
 //                  |   "(" expression ")";
@@ -78,8 +79,23 @@ static Expr* primary() {
     return NULL;
 }
 
+static Expr* integeration() {
+    if (match(TOKEN_INT)) {
+        consume(TOKEN_LEFT_PAREN, "Expect '(' after expression.");
+        Expr* int_expr = expression();
+        consume(TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
+        consume(TOKEN_LEFT_PAREN, "Expect '(' after expression.");
+        Expr* a = expression();
+        consume(TOKEN_COMMA, "Expect ',' after expression.");
+        Expr* b = expression();
+        consume(TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
+        return make_integeration_expr(int_expr, a, b);
+    }
+    return primary();
+}
+
 static Expr* power() {
-    Expr* expr = primary();
+    Expr* expr = integeration();
 
     while (match(TOKEN_POWER)) {
         Token* operator = previous();
