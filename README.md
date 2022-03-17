@@ -3,12 +3,16 @@
 ## Description
 Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical expression. It supports algebra, trigonometry and definite integral.
 
+## How to build
+```
+cmake CMakeLists.txt
+make
+```
+
 ## Usage
 ```bash
 acalc [FileName]
 ```
-
-
 
 ## Example
 ```bash
