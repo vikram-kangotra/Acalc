@@ -7,7 +7,6 @@ Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical
 - Calculate trigonometric functions.
 - Calculate definite integral of mathematical expression having numeric and trigonometric functions.
 
-## Example
 ## How to build
 ```
 cmake CMakeLists.txt
@@ -18,6 +17,7 @@ cmake CMakeLists.txt
 acalc [FileName]
 ```
 
+## Example
 ```bash
 > 34+234/3243*2423-432+sin(32+432/23+tan(x))-2343/23-34*sin(tan(x))
 -324.5426186
