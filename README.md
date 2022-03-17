@@ -6,7 +6,6 @@ Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical
 ## How to build
 ```
 cmake CMakeLists.txt
-make
 ```
 
 ## Usage
