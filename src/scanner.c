@@ -120,14 +120,29 @@ static TokenType identifierType() {
     switch (scanner.start[0]) {
         case 'c': {
             if (scanner.current - scanner.start > 1) {
-                TokenType type = checkKeyword(1, 2, "os", TOKEN_COS);
-                if (type == TOKEN_IDENTIFIER)
-                    type = checkKeyword(1, 4, "osec", TOKEN_COSEC);
-                return type;
+                switch (scanner.start[1]) {
+                    case 'o': {
+                        if (scanner.current - scanner.start > 2) {
+                            case 's': {
+                                if (scanner.current - scanner.start == 3)
+                                    return TOKEN_COS;
+                                return checkKeyword(3, 2, "ec", TOKEN_COSEC);
+                            } break;
+                            case 't': return checkKeyword(3, 0, "", TOKEN_COT);
+                        }
+                    } break;
+                }
             }
         } break;
         case 'i': return checkKeyword(1, 2, "nt", TOKEN_INT);
-        case 's': return checkKeyword(1, 2, "in", TOKEN_SIN);
+        case 's': {
+            if (scanner.current - scanner.start > 1) {
+                switch (scanner.start[1]) {
+                    case 'e': return checkKeyword(2, 1, "c", TOKEN_SEC);
+                    case 'i': return checkKeyword(2, 1, "n", TOKEN_SIN);
+                }
+            }
+        } break;
         case 't': {
             if (scanner.current - scanner.start > 1) {
                 switch (scanner.start[1]) {

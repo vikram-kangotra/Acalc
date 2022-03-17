@@ -5,7 +5,7 @@
 // expression       ->  term;
 // term             ->  factor (("-" | "+") factor)*;
 // factor           ->  unary (("/" | "*") unary)*;
-// unary            ->  ("-" | "sin" | "cos" | "tan") unary | power;
+// unary            ->  ("-" | "sin" | "cos" | "tan" | "cosec" | "sec" | "cot") unary | power;
 // power            ->  primary ("^" primary)*;
 // integeration     ->  "int" "(" term ")" "(" term "," term ")" | primary;
 // primary          ->  NUMBER
@@ -107,7 +107,8 @@ static Expr* power() {
 
 static Expr* unary() {
     if (match(TOKEN_MINUS) ||
-        match(TOKEN_SIN) || match(TOKEN_COS) || match(TOKEN_TAN) 
+        match(TOKEN_SIN) || match(TOKEN_COS) || match(TOKEN_TAN) ||
+        match(TOKEN_COSEC) || match(TOKEN_SEC) || match(TOKEN_COT)
         ) {
         Token* operator = previous();
         Expr* right = unary();

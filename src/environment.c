@@ -1,10 +1,8 @@
 #include "environment.h"
 #include "vector.h"
 #include "error.h"
-#include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <stdio.h>
 
 Vector* environment;
 
@@ -16,6 +14,7 @@ typedef struct {
 void initEnvironment() {
     environment = vec_make();
     environment_define("pi", M_PI);
+    environment_define("x", 0);
 }
 
 bool equal(Token* token, Pair* pair) {
@@ -34,7 +33,7 @@ double environment_get(Token* token) {
     int index = find(token);
     if (index == -1)
         error_msg(token, "variable not declared.");
-    return ((Pair*)environment->body[index])->value;
+    return vec_get_elem(Pair, environment, index)->value; 
 }
 
 void environment_define(const char* const name, double value) {

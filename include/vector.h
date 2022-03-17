@@ -20,4 +20,7 @@ void* vec_tail(Vector* vec);
 void* vec_body(Vector* vec);
 uint32_t vec_len(Vector* vec);
 
+#define vec_get_elem(type, vec, index)   \
+    ((type*) vec_get(vec, index))
+
 #endif

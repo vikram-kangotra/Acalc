@@ -1,12 +1,10 @@
 #include "interpreter.h"
 #include "error.h"
 #include "environment.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "ast.h"
+#include "common.h"
 #include <ctype.h>
 #include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
 
 typedef struct {
@@ -20,6 +18,10 @@ static double evaluate(Expr* expr);
 void initInterpreter(Expr* ast) {
    interpreter.ast = ast;
    initEnvironment();
+}
+
+void freeInterpreter() {
+    destroyAST(interpreter.ast);
 }
 
 double visitLiteralExpr(Expr* expr) {
@@ -38,6 +40,12 @@ double visitUnaryExpr(Expr* expr) {
             return cos(right);
         case TOKEN_TAN:
             return tan(right);
+        case TOKEN_COSEC:
+            return 1/sin(right);
+        case TOKEN_SEC:
+            return 1/cos(right);
+        case TOKEN_COT:
+            return 1/tan(right);
         default:
             return 0;
     }
@@ -102,5 +110,5 @@ static double evaluate(Expr* expr) {
 }
 
 void interpret() {
-    printf("%g", evaluate(interpreter.ast));
+    printf("%.10g", evaluate(interpreter.ast));
 }

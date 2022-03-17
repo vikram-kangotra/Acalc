@@ -1,7 +1,6 @@
 #include "error.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include "token.h"
+#include "common.h"
 
 void error_msg(Token* token, const char* const message) {
     printf("[line %d] Error: %.*s\n%s\n", token->line, token->length, token->start, message);
