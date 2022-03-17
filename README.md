@@ -1,14 +1,14 @@
 # Acalc (Advanced Calculator)
 
-## Description:
-Advanced Calculator (ACalc) is capable of calculating complex
-mathematical expression. It supports algebra, trigonometry and
-definite integral.
+## Description
+Advanced Calculator (ACalc) is capable of calculating complex mathematical expression. It supports algebra, trigonometry and definite integral.
 
-## Usage: 
-```acalc [FileName]
+## Usage
+```bash
+acalc [FileName]
+```
 
-## Example:
+## Example
 ```
 > 34+234/3243*2423-432+sin(32+432/23+tan(x))-2343/23-34*sin(tan(x))
 -324.5426186
