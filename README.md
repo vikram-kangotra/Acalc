@@ -1,11 +1,14 @@
-# Acalc (Advanced Calculator)
+# ACALC
+## Advanced Calculator for Accelerated Learning Coders
 
-Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical expression. It supports algebra, trigonometry and definite integral.
+Acalc was designed with the intent that programmers would gain the most from the application. That isn't to say that it can't be used by people who aren't programmers. It is, in fact, incredibly simple to set up and utilise.
+Acalc is capable of solving any sequence of difficult mathematical expressions.
+It can be used with or without a file name, and it can be run directly from the command line as REPL (Read Evaluate Print Loop).
 
-## What you can do.
-- Calculate long numeric expressions.
-- Calculate trigonometric functions.
-- Calculate definite integral of mathematical expression having numeric and trigonometric functions.
+## What it can do?
+- Perform calculations with long numeric expressions.
+- Use trigonometric functions to solve problems.
+- Determine the definite integral of a mathematical expression that contains both numeric and trigonometric functions.
 
 ## How to build
 ```
