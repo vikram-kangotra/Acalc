@@ -8,8 +8,10 @@ Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical
 acalc [FileName]
 ```
 
+
+
 ## Example
-```
+```bash
 > 34+234/3243*2423-432+sin(32+432/23+tan(x))-2343/23-34*sin(tan(x))
 -324.5426186
 > int( sin(x) )(0, pi)
