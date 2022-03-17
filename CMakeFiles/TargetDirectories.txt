@@ -1,3 +1,0 @@
-/home/vikram/Desktop/C/Acalc/CMakeFiles/rebuild_cache.dir
-/home/vikram/Desktop/C/Acalc/CMakeFiles/edit_cache.dir
-/home/vikram/Desktop/C/Acalc/CMakeFiles/acalc.dir
