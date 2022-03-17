@@ -1,7 +1,7 @@
 # Acalc (Advanced Calculator)
 
 ## Description
-Advanced Calculator (ACalc) is capable of calculating complex mathematical expression. It supports algebra, trigonometry and definite integral.
+Advanced Calculator (ACalc) is cli tool to easily calculate complex mathematical expression. It supports algebra, trigonometry and definite integral.
 
 ## Usage
 ```bash
