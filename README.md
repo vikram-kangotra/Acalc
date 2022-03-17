@@ -12,6 +12,11 @@ cmake CMakeLists.txt
 acalc [FileName]
 ```
 
+## What you can do.
+- Calculate long numeric expressions.
+- Calculate trigonometric functions.
+- Calculate definite integral of mathematical expression having numeric and trigonometric functions.
+
 ## Example
 ```bash
 > 34+234/3243*2423-432+sin(32+432/23+tan(x))-2343/23-34*sin(tan(x))
